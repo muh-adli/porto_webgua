@@ -35,13 +35,19 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link {% if request.path == '/guamap/' %}active{% endif %}" href="{% url 'guamap' %}">Goa</a>
+                            <a class="nav-link{% if request.path == '/guamap/' %}active{% endif %}" href="
+                            {% comment %} {% url 'guamap' %} {% endcomment %}
+                            ">Goa</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {% if request.path == '/coordinate_converter/' %}active{% endif %}" href="{% url 'coorConvert' %}">Coordinate Converter</a>
+                            <a class="nav-link {% if request.path == '/coordinate_converter/' %}active{% endif %}" href="
+                            {% comment %} {% url 'coorConvert' %} {% endcomment %}
+                            ">Coordinate Converter</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {% if request.path == '/transport/' %}active{% endif %}" href="{% url 'transHome' %}">Transportation</a>
+                            <a class="nav-link {% if request.path == '/transport/' %}active{% endif %}" href="
+                            {% comment %} {% url 'transHome' %} {% endcomment %}
+                            ">Transportation</a>
                         </li>
                     </ul>
                 </div>

@@ -49,7 +49,9 @@ INSTALLED_APPS = [
 
     ## Local apps
     'accounts',
-    'transport',
+    # 'transport',
+    # 'gua',
+    # 'coordConv',
 ]
 
 MIDDLEWARE = [
