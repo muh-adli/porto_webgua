@@ -11,10 +11,10 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 import os
 from os import getenv
-# from dotenv import load_dotenv
+from dotenv import load_dotenv
 from pathlib import Path
 
-# load_dotenv()
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -35,6 +35,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    ## Django apps
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -42,6 +43,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.humanize',
+
+    ## Third-party apps
+    'django_tables2',
+
+    ## Local apps
+    'accounts',
+    'transport',
 ]
 
 MIDDLEWARE = [
@@ -79,22 +87,22 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': BASE_DIR / 'db.sqlite3',
+    # },
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        # 'ENGINE': 'django.contrib.gis.db.backends.postgis',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': getenv('PGDATABASE_neon'),
+        'USER': getenv('PGUSER_neon'),
+        'PASSWORD': getenv('PGPASSWORD_neon'),
+        'HOST': getenv('PGHOST_neon'),
+        'PORT': getenv('PGPORT_neon', 5432),
+        'OPTIONS': {
+            'sslmode': 'require', # Change to require if SSL enable
+        },
     },
-    # 'neon': {
-    #     # 'ENGINE': 'django.contrib.gis.db.backends.postgis',
-    #     'ENGINE': 'django.db.backends.postgresql',
-    #     'NAME': getenv('PGDATABASE_neon'),
-    #     'USER': getenv('PGUSER_neon'),
-    #     'PASSWORD': getenv('PGPASSWORD_neon'),
-    #     'HOST': getenv('PGHOST_neon'),
-    #     'PORT': getenv('PGPORT_neon', 5432),
-    #     'OPTIONS': {
-    #         'sslmode': 'require', # Change to require if SSL enable
-    #     },
-    }
 }
 
 
@@ -136,9 +144,7 @@ STATIC_URL = 'static/'
 # The absolute path to the directory where collectstatic will collect static files for deployment.
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # Additional locations the staticfiles app will traverse
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
-]
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
