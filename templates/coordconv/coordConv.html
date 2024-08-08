@@ -22,35 +22,35 @@
         <form method="post" action="{% url 'coordConv' %}">
             {% csrf_token %}
             <div class="form-group">
-                <label for="{{ form.x.id_for_label }}">X Coordinate</label>
+                <label>X Coordinate</label>
                 {{ wgs_form.lattitude }}
             </div>
             <div class="form-group">
-                <label for="{{ form.x.id_for_label }}">X Coordinate</label>
+                <label>X Coordinate</label>
                 {{ wgs_form.longitude }}
             </div>
 
-            <button type="submit" name="wgs_submit" class="btn btn-primary mt-2">Convert WGS</button>
+            <button type="submit" class="btn btn-primary mt-2" name="typeForm" value="wgs">Convert WGS</button>
         </form>
     </div>
 
     <div class="col-12 col-xs-12 col-sm-12 col-md-6 col-lg-4 ">
         <h1>UTM</h1>
-        <form method="post" action="{ url 'coordConv'}">
+        <form method="post" action="{% url 'coordConv' %}">
             {% csrf_token %}
             <div class="form-group">
-                <label for="{{ form.x.id_for_label }}">X Coordinate</label>
+                <label>X Coordinate</label>
                 {{ utm_form.x }}
             </div>
             <div class="form-group">
-                <label for="{{ form.y.id_for_label }}">Y Coordinate</label>
+                <label>Y Coordinate</label>
                 {{ utm_form.y }}
             </div>
             <div class="form-group">
-                <label for="{{ form.utm.id_for_label }}">UTM Zone</label>
-                {{ utm_form.utm }}
+                <label>UTM Zone</label>
+                {{ utm_form.zone }}
             </div>
-            <button type="submit" name="utm_submit" class="btn btn-primary mt-2">Convert UTM</button>
+            <button type="submit" class="btn btn-primary mt-2" name="typeForm" value="utm">Convert UTM</button>
         </form>
     </div>
 
