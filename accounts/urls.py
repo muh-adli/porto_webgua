@@ -22,5 +22,5 @@ from .views import *
 urlpatterns = [
     path('', index, name="index"),
     path('home/', homepage, name="homepage"),
-    path('logout/', logout, name="logouta"),
+    path('logout/', logout, name="logout"),
 ]

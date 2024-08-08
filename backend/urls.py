@@ -22,7 +22,7 @@ from backend import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('accounts.urls')),
-    # path('coordConv/', include('coordConv.urls')),
+    path('coordConv/', include('coordConv.urls')),
     # path('gua/', include('gua.urls')),
     # path('transport/', include('transport.urls')),
 ]

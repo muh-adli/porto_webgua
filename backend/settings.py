@@ -30,6 +30,7 @@ SECRET_KEY = 'django-insecure-*j(j4^h3^1jzws)*2$54y4rze$*^u%v(m+i0*p#ar4s_estcr_
 DEBUG = True
 
 ALLOWED_HOSTS = [
+    '127.0.0.1',
     'muhadli.pythonanywhere.com',
 ]
 
@@ -52,9 +53,15 @@ INSTALLED_APPS = [
     ## Local apps
     'accounts',
     # 'transport',
-    # 'gua',
-    # 'coordConv',
+    'gua',
+    'coordConv',
 ]
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://8000-idx-portowebgua-1722596458139.cluster-3g4scxt2njdd6uovkqyfcabgo6.cloudworkstations.dev',
+    # change to other trusted origins if needed
+]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

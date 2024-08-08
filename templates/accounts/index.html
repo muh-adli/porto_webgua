@@ -6,38 +6,23 @@
 {% endblock %}
 
 {% block content %}
-<div class="container">
-    <h2>Login</h2>
-    <form method="post" novalidate>
-        {% csrf_token %}
-        <div class="form-group">
-            {{ form.username.label_tag }}
-            {{ form.username }}
-            {% if form.username.errors %}
-                <div class="invalid-feedback">
-                    {{ form.username.errors }}
-                </div>
-            {% endif %}
-        </div>
-        <div class="form-group">
-            {{ form.password.label_tag }}
-            {{ form.password }}
-            {% if form.password.errors %}
-                <div class="invalid-feedback">
-                    {{ form.password.errors }}
-                </div>
-            {% endif %}
-        </div>
-        {% if form.non_field_errors %}
-            <div class="alert alert-danger">
-                {{ form.non_field_errors }}
-            </div>
-        {% endif %}
-        <button type="submit" class="btn btn-primary">Login</button>
-    </form>
+<h2>Ini index</h2>
+<p>buat deskripsi web-app</p>
+<a href="{% url 'homepage' %}">coba langsung, kalo berubah berarti login salah</a>
 
-    <a href="{% url 'homepage' %}">coba langsung</a>
-</div>
+{% if messages %}
+    <div class="alert alert-dismissible fade show" role="alert">
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+{% endif %}
+
 {% endblock %}
 
 {% block script %}

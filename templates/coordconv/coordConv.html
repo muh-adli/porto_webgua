@@ -16,38 +16,44 @@
     </div>
 </div>
 <div class="row">
+
     <div class="col-12 col-xs-12 col-sm-12 col-md-6 col-lg-4 ">
-        <h1>WGS</h1>
-        <form>
+        <h1>WGS 84</h1>
+        <form method="post" action="{% url 'coordConv' %}">
+            {% csrf_token %}
             <div class="form-group">
-                <label for="exampleInputEmail1">Latitude</label>
-                <input type="number" class="form-control my-1" id="Latitude" aria-describedby="Latitude" placeholder="Latitude">
+                <label for="{{ form.x.id_for_label }}">X Coordinate</label>
+                {{ wgs_form.lattitude }}
             </div>
             <div class="form-group">
-                <label for="exampleInputPassword1">Longitude</label>
-                <input type="number" class="form-control my-1" id="Longitude" aria-describedby="Longitude" placeholder="Longitude">
+                <label for="{{ form.x.id_for_label }}">X Coordinate</label>
+                {{ wgs_form.longitude }}
             </div>
-            <button type="submit" class="btn btn-primary mt-2">Convert</button>
+
+            <button type="submit" name="wgs_submit" class="btn btn-primary mt-2">Convert WGS</button>
         </form>
     </div>
+
     <div class="col-12 col-xs-12 col-sm-12 col-md-6 col-lg-4 ">
         <h1>UTM</h1>
-        <form>
+        <form method="post" action="{ url 'coordConv'}">
+            {% csrf_token %}
             <div class="form-group">
-                <label for="exampleInputEmail1">Coordinate X</label>
-                <input type="number" class="form-control my-1" id="X" aria-describedby="Coordinate X" placeholder="Coordinate X">
+                <label for="{{ form.x.id_for_label }}">X Coordinate</label>
+                {{ utm_form.x }}
             </div>
             <div class="form-group">
-                <label for="exampleInputPassword1">Coordinate Y</label>
-                <input type="number" class="form-control my-1" id="Y" aria-describedby="Coordinate Y" placeholder="Coordinate Y">
+                <label for="{{ form.y.id_for_label }}">Y Coordinate</label>
+                {{ utm_form.y }}
             </div>
             <div class="form-group">
-                <label for="exampleInputPassword1">UTM</label>
-                <input type="number" class="form-control my-1" id="UTM" aria-describedby="UTM" placeholder="UTM Zone">
+                <label for="{{ form.utm.id_for_label }}">UTM Zone</label>
+                {{ utm_form.utm }}
             </div>
-            <button type="submit" class="btn btn-primary mt-2">Convert</button>
+            <button type="submit" name="utm_submit" class="btn btn-primary mt-2">Convert UTM</button>
         </form>
     </div>
+
     <div class="col-12 col-xs-12 col-sm-12 col-md-12 col-lg-4 ">
         <h1>batch file</h1>
         <form>
@@ -65,6 +71,7 @@
             </div>
         </form>
     </div>
+
 </div>
 {% endblock %}
 
