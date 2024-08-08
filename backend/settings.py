@@ -53,7 +53,7 @@ INSTALLED_APPS = [
     ## Local apps
     'accounts',
     # 'transport',
-    'gua',
+    # 'gua',
     'coordConv',
 ]
 
