@@ -31,6 +31,8 @@ def guamap(request):
             "geometry": json.loads(obj.point.geojson),
             "properties": {
                 "kode_desa": obj.kode_desa,
+                "kecamatan": obj.kecamatan,
+                "nama_objek": obj.nama_objek,
                 # "kode_karts": obj.kode_karts,
                 # "nama_objek": obj.nama_objek,
                 # "jenis": obj.jenis,
@@ -56,7 +58,7 @@ def guamap(request):
         "type": "FeatureCollection",
         "features": features
     }
-
+    print (geojson_data)
     context = {
         'title': title,
         'geojson_data': geojson_data
