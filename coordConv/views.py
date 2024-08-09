@@ -2,7 +2,7 @@ from django.shortcuts import render
 
 from .froms import utmForm, wgsForm
 
-from pyproj import Transformer
+from pyproj import Transformer, CRS
 
 # Create your views here.
 def coordConv(request):
@@ -49,6 +49,7 @@ def coordConv(request):
                 # Convert to float
                 lattitude = float(lattitude)
                 longitude = float(longitude)
+                print ("masuk try")
                 
                 # Validate latitude and longitude
                 if not (-90 <= lattitude <= 90):
@@ -68,6 +69,7 @@ def coordConv(request):
                 # Validate EPSG code
                 try:
                     crs = CRS.from_string(utm_crs)
+                    print ("masuk crs")
                 except Exception as e:
                     raise ValueError(f"Invalid EPSG code: {utm_crs}. Error: {e}")
 
@@ -83,8 +85,8 @@ def coordConv(request):
                     'longitude': longitude,
                 }
                 resultUTM = {
-                    'x': x,
-                    'y': y,
+                    'x': round(x,3),
+                    'y': round(y,3),
                     'utm': utm_crs,
                 }
 

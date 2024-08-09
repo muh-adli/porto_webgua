@@ -8,6 +8,7 @@ class utmForm(forms.Form):
         ('EPSG:32649', 'Zone 49N'),
         ('EPSG:32650', 'Zone 50N'),
         ('EPSG:32651', 'Zone 51N'),
+        ('EPSG:32749', 'Zone 49S'),
     ]
 
     x = forms.FloatField(label='X Coordinate', required=True)

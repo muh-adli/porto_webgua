@@ -98,23 +98,15 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.sqlite3',
-    #     'NAME': BASE_DIR / 'db.sqlite3',
-    # },
     'default': {
-        # 'ENGINE': 'django.contrib.gis.db.backends.postgis',
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': getenv('PGDATABASE_neon'),
-        'USER': getenv('PGUSER_neon'),
-        'PASSWORD': getenv('PGPASSWORD_neon'),
-        'HOST': getenv('PGHOST_neon'),
-        'PORT': getenv('PGPORT_neon', 5432),
-        'OPTIONS': {
-            'sslmode': 'require', # Change to require if SSL enable
+        'ENGINE': 'django.contrib.gis.db.backends.postgis',
+        'NAME': 'webgisgoa',
+        'USER': 'postgres',
+        'PASSWORD': 'postgres',
+        'HOST': 'localhost',
+        'PORT': 1234
         },
-    },
-}
+    }
 
 
 # Password validation
@@ -161,3 +153,9 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),]
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+OSGEO4W_ROOT=r'C:\OSGeo4W' # OSGEO4W Path
+GDAL_DATA = r'C:\OSGeo4W\apps\gdal' # GDAL DATA Path
+PROJ_LIB = r'%OSGEO4W_ROOT%\share\proj' # Proj Path
+GDAL_LIBRARY_PATH = r'C:\OSGeo4W\bin\gdal308.dll'
+GEOS_LIBRARY_PATH = r'C:\OSGeo4W\bin\geos_c.dll'
