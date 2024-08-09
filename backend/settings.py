@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     # 'transport',
     # 'gua',
     'coordConv',
+    'gua'
 ]
 
 CSRF_TRUSTED_ORIGINS = [

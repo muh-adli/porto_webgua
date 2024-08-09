@@ -23,6 +23,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('accounts.urls')),
     path('coordConv/', include('coordConv.urls')),
+    path('goamap/', include('gua.urls'))
     # path('gua/', include('gua.urls')),
     # path('transport/', include('transport.urls')),
 ]
